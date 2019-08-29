@@ -4,34 +4,12 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <display-name>todoList</display-name>
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    <servlet>
-        <servlet-name>LoginController</servlet-name>
-        <servlet-class>by.gsu.epamlab.controllers.LoginController</servlet-class>
-        <init-param>
-            <param-name>dao</param-name>
-            <param-value>jdbc</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginController</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>RegistrationController</servlet-name>
-        <servlet-class>by.gsu.epamlab.controllers.RegistrationController</servlet-class>
-        <init-param>
-            <param-name>dao</param-name>
-            <param-value>jdbc</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegistrationController</servlet-name>
-        <url-pattern>/registrate</url-pattern>
-    </servlet-mapping>
+
 
     <jsp-config>
         <taglib>
@@ -39,6 +17,37 @@
             <taglib-location>/WEB-INF/c.tld</taglib-location>
         </taglib>
     </jsp-config>
+
+
+    <resource-ref>
+        <res-ref-name>jdbc/webProject</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+<!--
+
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>by.gsu.epamlab.filters.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/task/*</url-pattern>
+    </filter-mapping>
+-->
+
+
+
+    <!--    <error-page>
+            <error-code>404</error-code>
+            <location>/jsp/error/errors.jsp</location>
+        </error-page>
+
+        <error-page>
+            <exception-type>java.lang.RuntimeException</exception-type>
+            <location>/jsp/error/errors.jsp</location>
+        </error-page>-->
 
 
 </web-app>

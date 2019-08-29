@@ -8,8 +8,10 @@
           <element id="module-output" name="webProject" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="jstl" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.16" />
           <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/jstl.jar" />
-          <element id="library" level="project" name="mysql-connector" />
+          <element id="library" level="project" name="standard" />
         </element>
       </element>
     </root>
