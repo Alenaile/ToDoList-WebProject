@@ -11,7 +11,7 @@ public final class ConstantsSQL {
     public static final String DELETE_TASKS = "DELETE FROM `tasks` WHERE `tasks`.`section`='RECYCLEBIN' AND `idUser`= ?";
     public static final String GET_TASKS = "SELECT idUser,`date`, `description`, fileName,`section`, taskId FROM tasks WHERE tasks.idUser = ?";  //tasks.date, tasks.description, tasks.file, tasks.section, tasks.taskId
     public static final String ADD_TASK = "INSERT INTO `tasks`(idUser,`date`, `description`, `section`) VALUES(?,?,?,?)";
-    public static final String SELECT_FILE_TO_DOWNLOAD = "SELECT  users.tasks.file FROM users.tasks WHERE users.tasks.taskId=?";
+    public static final String SELECT_ATTACH_TO_DOWNLOAD = "SELECT users.tasks.fileName, users.tasks.file  FROM users.tasks WHERE users.tasks.taskId=?";
 
     public static final String UPLOAD_FILE = "UPDATE `tasks` SET `fileName`= ? ,`file`= ? WHERE `taskId`= ? ";
     public static final String DELETE_FILE = "UPDATE `tasks` SET `fileName`= NULL ,`file`= NULL WHERE `taskId`= ? ";
@@ -35,6 +35,4 @@ public final class ConstantsSQL {
     public static final String ERROR_UPLOAD_FILE = "Error. Can't upload file";
     public static final String ERROR_DELETE_FILE = "Error. Can't delete file";
 
-
-    public static final String KEY_FILE = "file";
 }

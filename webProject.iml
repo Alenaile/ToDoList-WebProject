@@ -32,8 +32,6 @@
     <orderEntry type="library" name="mysql-connector-java-8.0.16" level="project" />
     <orderEntry type="library" name="jstl" level="project" />
     <orderEntry type="library" name="standard" level="project" />
-    <orderEntry type="library" name="slf4j-api-1.7.28" level="project" />
-    <orderEntry type="library" name="slf4j-log4j12-1.7.28" level="project" />
     <orderEntry type="library" name="log4j-1.2.17" level="project" />
   </component>
 </module>

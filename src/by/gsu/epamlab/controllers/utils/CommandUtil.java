@@ -27,10 +27,14 @@ public final class CommandUtil {
 
     public static Task getTaskById(int taskId, ITaskDAO taskDAO, User user) throws DAOException {
         List<Task> tasks = taskDAO.getTasks(user);
-        Task task = tasks.stream()
+        return tasks.stream()
                 .filter(comparableTask -> taskId == comparableTask.getId())
                 .findAny()
                 .orElse(null);
-        return task;
+    }
+
+    public static void setAttributeTasks(ITaskDAO taskDAO, User user, HttpSession session) throws DAOException {
+        List<Task> tasks = taskDAO.getTasks(user);
+        session.setAttribute(Constants.KEY_TASKS_ATTR, tasks);
     }
 }

@@ -24,11 +24,10 @@ import java.io.IOException;
 
 )
 public class StartController extends BaseController {
-private Logger logger = null;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        logger = Logger.getRootLogger();
+        Logger logger = Logger.getRootLogger();
 
         String strUserDAO = config.getInitParameter(Constants.KEY_USER_DAO);
         String strTaskDAO = config.getInitParameter(Constants.KEY_TASK_DAO);
@@ -39,8 +38,6 @@ private Logger logger = null;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.forward(ConstantsJSP.WELCOME_PAGE, request, response);
     }
-
-
 
 
 }

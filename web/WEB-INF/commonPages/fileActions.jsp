@@ -9,12 +9,12 @@
            value="<%=ConstantsJSP.ACTIVE%>">
     <c:choose>
         <c:when test="${not empty task.fileName}">
-            <span> ${task.fileName}</span>
-            <span class="submits">
-<%--<a href="/controller?action=Download&section=ACTIVE&id=${task.id}" download="">${task.fileName}</a>--%>
-            <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>" value="Download">
+
+            <a class="aDownload" href="/controller?action=Download&section=ACTIVE&id=${task.id}"
+               download="">${task.fileName}</a>
+
             <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>" value="Del">
-                                                            </span>
+
         </c:when>
         <c:otherwise>
 

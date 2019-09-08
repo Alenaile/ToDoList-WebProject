@@ -11,13 +11,14 @@ import by.gsu.epamlab.model.interfaces.ITaskDAO;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class PermDeleteAllCommand  implements ActionCommand {
+public class PermDeleteAllCommand implements ActionCommand {
     private static final Logger LOGGER = Logger.getLogger(PermDeleteAllCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         User user = CommandUtil.getUser(session);
         ITaskDAO taskDAO = TaskFactory.getClassFromFactory();

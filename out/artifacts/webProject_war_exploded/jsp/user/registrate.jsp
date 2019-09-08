@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="by.gsu.epamlab.model.constants.Constants" %>
 <%@ page import="by.gsu.epamlab.model.constants.ConstantsJSP" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 

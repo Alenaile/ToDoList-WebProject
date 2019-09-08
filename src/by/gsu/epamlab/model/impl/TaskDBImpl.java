@@ -1,5 +1,6 @@
 package by.gsu.epamlab.model.impl;
 
+import by.gsu.epamlab.model.bean.Attachment;
 import by.gsu.epamlab.model.bean.Task;
 import by.gsu.epamlab.model.bean.User;
 import by.gsu.epamlab.model.constants.Constants;
@@ -9,16 +10,8 @@ import by.gsu.epamlab.model.interfaces.ITaskDAO;
 import by.gsu.epamlab.model.utils.ConnectionManager;
 import org.apache.log4j.Logger;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -137,34 +130,29 @@ public class TaskDBImpl implements ITaskDAO {
     }
 
     @Override
-    public void downloadFile(Task task) throws DAOException {
+    public Attachment downloadFile(Task task) throws DAOException {
         ResultSet rs;
-
+        Attachment attachment = null;
         try (Connection cn = ConnectionManager.getConnection();
-             PreparedStatement pst = cn.prepareStatement(ConstantsSQL.SELECT_FILE_TO_DOWNLOAD)) {
+             PreparedStatement pst = cn.prepareStatement(ConstantsSQL.SELECT_ATTACH_TO_DOWNLOAD)) {
 
             pst.setInt(1, task.getId());
             rs = pst.executeQuery();
 
-
             while (rs.next()) {
-                InputStream input = rs.getBinaryStream(ConstantsSQL.KEY_FILE);
+                String fileName = rs.getString(1);
+                Blob file = rs.getBlob(2);
+                attachment = new Attachment(fileName, file, task.getId());
 
-                Path path = Paths.get(Constants.DOWNLOAD_PATH + task.getFileName());
-                Files.copy(input, path, StandardCopyOption.REPLACE_EXISTING);
             }
-
+            return attachment;
         } catch (SQLException e) {
             LOGGER.error(e.toString(), e);
             throw new DAOException(ConstantsSQL.ERROR_DOWNLOAD_FILE);
-        } catch (IOException e) {
-            LOGGER.error(e.toString(), e);
-            throw new DAOException(e.getMessage());
         } finally {
             ConnectionManager.closeResultSets();
         }
     }
-
 
     private void updateTasks(String sql, String[] ids) throws DAOException {
         try (Connection cn = ConnectionManager.getConnection();

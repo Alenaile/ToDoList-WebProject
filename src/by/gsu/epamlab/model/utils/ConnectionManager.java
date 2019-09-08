@@ -2,8 +2,7 @@ package by.gsu.epamlab.model.utils;
 
 import by.gsu.epamlab.model.constants.Constants;
 import by.gsu.epamlab.model.exceptions.DAOException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -14,9 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-
 public final class ConnectionManager {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionManager.class);
+    private static final Logger LOGGER = Logger.getLogger(ConnectionManager.class);
 
     private static DataSource dataSource;
     private static final String CONTEXT = "java:comp/env/jdbc/webProject";

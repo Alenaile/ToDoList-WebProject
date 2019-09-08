@@ -1,5 +1,6 @@
 package by.gsu.epamlab.model.interfaces;
 
+import by.gsu.epamlab.model.bean.Attachment;
 import by.gsu.epamlab.model.bean.Task;
 import by.gsu.epamlab.model.bean.User;
 import by.gsu.epamlab.model.exceptions.DAOException;
@@ -27,6 +28,6 @@ public interface ITaskDAO {
 
     void deleteFile(Task task) throws DAOException;
 
-    void downloadFile(Task task) throws DAOException;
+    Attachment downloadFile(Task task) throws DAOException;
 
 }

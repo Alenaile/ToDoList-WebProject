@@ -13,17 +13,17 @@ import java.io.IOException;
 @WebServlet("/BaseController")
 public abstract class BaseController extends HttpServlet {
 
-    protected void redirect(String url, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    void redirect(String url, HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.sendRedirect(request.getContextPath() + url);
     }
 
-    protected void forward(String url, HttpServletRequest request,
-                           HttpServletResponse response) throws ServletException, IOException {
+    void forward(String url, HttpServletRequest request,
+                 HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
         rd.forward(request, response);
     }
 
-    protected boolean isError(HttpServletRequest request) {
+    boolean isError(HttpServletRequest request) {
         return request.getAttribute(Constants.KEY_ERROR_MESSAGE_ATTR) == null;
     }
 

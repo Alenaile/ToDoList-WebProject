@@ -1,4 +1,3 @@
-<%@ page import="by.gsu.epamlab.model.constants.Constants" %>
 <%@ page import="by.gsu.epamlab.model.constants.ConstantsJSP" %>
 <%@ page import="java.util.Date" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -68,13 +67,12 @@
 
                                             <c:choose>
                                                 <c:when test="${not empty task.fileName}">
-                                                    <span>${task.fileName}</span>
-                                                    <div class="submits">
-                                                        <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>"
-                                                               value="Download">
-                                                        <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>"
-                                                               value="Del">
-                                                    </div>
+                                                    <a class="aDownload"
+                                                       href="<c:url value="/controller?action=Download&section=RECYCLEBIN&id=${task.id}"/>"
+                                                       download="">${task.fileName}</a>
+                                                    <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>"
+                                                           value="Del">
+
                                                 </c:when>
                                                 <c:otherwise>
                                                     <c:out value="<%=ConstantsJSP.NO_FILE %>"/>
@@ -89,9 +87,9 @@
                     </table>
                 </div>
                 <div class="submits">
-                    <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>"  value="Recover">
+                    <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>" value="Recover">
                     <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>" value="Delete">
-                    <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>"  value="Clear">
+                    <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>" value="Clear">
                 </div>
             </form>
         </div>

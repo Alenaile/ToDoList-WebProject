@@ -1,5 +1,6 @@
 package by.gsu.epamlab.model.impl;
 
+import by.gsu.epamlab.model.bean.Attachment;
 import by.gsu.epamlab.model.bean.Task;
 import by.gsu.epamlab.model.bean.User;
 import by.gsu.epamlab.model.constants.Constants;
@@ -13,7 +14,6 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -76,37 +76,33 @@ public class TaskHardcodedImpl implements ITaskDAO {
 
     @Override
     public void uploadFile(Task task, InputStream inputStream, String fileName) throws IOException {
-        FileOutputStream out = new FileOutputStream(new File(Constants.UPLOAD_PATH+ fileName));
-            int read ;
-            final byte[] bytes = new byte[1024];
-            while ((read = inputStream.read(bytes)) != -1) {
-                out.write(bytes, 0, read);
-            }
-            task.setFileName(fileName);
+        File file = new File(Constants.UPLOAD_PATH + fileName);
+        FileOutputStream out = new FileOutputStream(file);
 
+        int read;
+        final byte[] bytes = new byte[1024];
+        while ((read = inputStream.read(bytes)) != -1) {
+            out.write(bytes, 0, read);
+        }
+        task.setFileName(fileName);
+        task.setFile(file);
     }
 
     @Override
     public void deleteFile(Task task) {
-        Path pathSource = Paths.get(Constants.UPLOAD_PATH+ task.getFileName());
+        Path pathSource = Paths.get(Constants.UPLOAD_PATH + task.getFileName());
         try {
             Files.delete(pathSource);
         } catch (IOException e) {
             e.printStackTrace();
         }
         task.setFileName(null);
+        task.setFile(null);
     }
 
     @Override
-    public void downloadFile(Task task) {
-        Path uploads = Paths.get(Constants.UPLOAD_PATH + task.getFileName());
-        Path downloads = Paths.get(Constants.DOWNLOAD_PATH + task.getFileName());
-
-        try {
-            Files.copy(uploads, downloads, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public Attachment downloadFile(Task task) {
+        return new Attachment(task.getFileName(), task.getFile(), task.getId());
     }
 
 

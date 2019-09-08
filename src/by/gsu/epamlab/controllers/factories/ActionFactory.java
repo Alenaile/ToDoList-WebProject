@@ -13,7 +13,6 @@ public class ActionFactory {
         String action = request.getParameter(ConstantsJSP.KEY_ACTION);
         ActionType currentType = ActionType.valueOf(action.toUpperCase());
 
-        ActionCommand current = currentType.getCurrentCommand();
-        return current;
+        return currentType.getCurrentCommand();
     }
 }

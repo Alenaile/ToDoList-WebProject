@@ -46,7 +46,6 @@ header {
 .header_username {
     font-size: 1em;
     font-weight: 400;
-
 }
 
 .nav_header {
@@ -92,6 +91,28 @@ header {
 .nav_link:hover:after {
     opacity: 1;
 }
+
+.aDownload {
+    text-decoration: none;
+    display: inline-block;
+    padding: 3px 5px;
+    letter-spacing: 1px;
+    margin: 0 20px;
+    font-size: 12px;
+
+    background-image: linear-gradient(#EE5E4F 50%, #EE5E4F 50%), linear-gradient(silver 50%, silver 50%);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 0 .063em, 100% .063em;
+    color: #faffe3;
+    /*   padding-bottom: .188em;*/
+    transition: background-size .5s;
+}
+.aDownload:hover {
+    background-size: 100% .063em, 100% .063em;
+    background-position: left bottom;
+}
+
 
 
 /*INTRO*/
@@ -235,11 +256,13 @@ input[type=submit]:active {
 }
 
 
+
+
 /*MAIN TASKS*/
 .tab {
-    width: 70%; /* Ширина блока */
-    height: 25%; /* Высота блока */
-    padding: 5px; /* Поля вокруг текста */
+    width: 70%;
+    height: 25%;
+    padding: 5px;
 
     background-color: rgba(0, 0, 0, 0.16);
     border-collapse: collapse;
@@ -248,9 +271,9 @@ input[type=submit]:active {
 }
 
 .fixed, .recycle {
-    width: 70%; /* Ширина блока */
-    height: 70%; /* Высота блока */
-    padding: 5px; /* Поля вокруг текста */
+    width: 70%;
+    height: 70%;
+    padding: 5px;
 
     background-color: rgba(0, 0, 0, 0.16);
     border-collapse: collapse;
@@ -296,7 +319,6 @@ th {
 
 label {
     cursor: pointer;
-    /* Style as you please, it will become the visible UI component. */
 }
 
 #custom-file-input{

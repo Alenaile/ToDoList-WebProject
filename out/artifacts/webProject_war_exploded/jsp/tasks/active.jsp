@@ -1,4 +1,3 @@
-<%@ page import="by.gsu.epamlab.model.constants.Constants" %>
 <%@ page import="by.gsu.epamlab.model.constants.ConstantsJSP" %>
 <%@ page import="java.util.Date" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -142,8 +141,8 @@
                         </div>
                     </div>
                     <div class="submits">
-                        <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>"  value="Fix">
-                        <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>"  value="Remove">
+                        <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>" value="Fix">
+                        <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>" value="Remove">
                     </div>
                 </div>
             </form>
@@ -153,7 +152,8 @@
         <div class="add">
             <form class="addTaskForm" action="<c:out value="${controller}"/>" method="post">
                 <input type="hidden" name="<%=ConstantsJSP.KEY_SECTION%>" value="<%=ConstantsJSP.ACTIVE%>">
-                <label> Describe your new task: <input type="text" name="<%=ConstantsJSP.KEY_NEW_TASK%>" value="" required/></label>
+                <label> Describe your new task: <input type="text" name="<%=ConstantsJSP.KEY_NEW_TASK%>" value=""
+                                                       required/></label>
                 <label> <input type="date" name=<%=ConstantsJSP.KEY_DATE%> value="" required/> </label>
                 <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>" value="Add"/>
 

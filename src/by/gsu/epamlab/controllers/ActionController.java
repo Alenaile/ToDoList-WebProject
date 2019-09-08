@@ -34,7 +34,7 @@ public class ActionController extends BaseController {
         String page;
 
         ActionCommand command = ActionFactory.defineCommand(request);
-        page = command.execute(request);
+        page = command.execute(request, response);
 
         if (isError(request)) {
             redirect(page, request, response);

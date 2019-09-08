@@ -1,5 +1,4 @@
 <%@ page import="by.gsu.epamlab.model.constants.ConstantsJSP" %>
-<%@ page import="by.gsu.epamlab.model.constants.ConstantsSQL" %>
 <%@ page import="java.util.Date" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -10,6 +9,7 @@
 <c:url value="${ConstantsJSP.RECYCLE_BIN_PAGE}" var="recycleBinJSP"/>
 <c:url value='${ConstantsJSP.MAIN_PAGE}' var="activeJSP"/>
 <c:url value='${ConstantsJSP.CONTROLLER}' var="controller"/>
+
 
 <html>
 <head>
@@ -68,13 +68,12 @@
                                             <c:choose>
                                                 <c:when test="${not empty task.fileName}">
 
-                                                    <span>${task.fileName}</span>
-                                                    <div class="submits">
-                                                        <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>"
-                                                               value="Download">
-                                                        <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>"
-                                                               value="Del">
-                                                    </div>
+                                                    <a class="aDownload"
+                                                       href="<c:url value="/controller?action=Download&section=FIXED&id=${task.id}"/>"
+                                                       download="">${task.fileName}</a>
+                                                    <input type="submit" name="<%=ConstantsJSP.KEY_ACTION%>"
+                                                           value="Del">
+
                                                 </c:when>
                                                 <c:otherwise>
                                                     <c:out value="<%=ConstantsJSP.NO_FILE %>"/>
