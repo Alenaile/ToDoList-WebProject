@@ -5,6 +5,8 @@
       <map>
         <entry key="file://$PROJECT_DIR$/web/errors.jsp" value="file://$PROJECT_DIR$/web" />
         <entry key="file://$PROJECT_DIR$/web/index.jsp" value="file://$PROJECT_DIR$/web" />
+        <entry key="file://$PROJECT_DIR$/web/jsp/accountPages/login.jsp" value="file://$PROJECT_DIR$/web" />
+        <entry key="file://$PROJECT_DIR$/web/jsp/sections/active.jsp" value="file://$PROJECT_DIR$/web" />
       </map>
     </option>
   </component>

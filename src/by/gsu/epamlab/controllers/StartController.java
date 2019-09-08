@@ -1,8 +1,10 @@
 package by.gsu.epamlab.controllers;
 
-import by.gsu.epamlab.constants.Constants;
-import by.gsu.epamlab.factories.TaskFactory;
-import by.gsu.epamlab.factories.UserFactory;
+import by.gsu.epamlab.model.constants.Constants;
+import by.gsu.epamlab.model.constants.ConstantsJSP;
+import by.gsu.epamlab.model.factories.TaskFactory;
+import by.gsu.epamlab.model.factories.UserFactory;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -17,14 +19,17 @@ import java.io.IOException;
         urlPatterns = {"/start"},
         initParams = {
                 @WebInitParam(name = Constants.KEY_USER_DAO, value = Constants.DB_IMPL),
-                @WebInitParam(name = Constants.KEY_TASK_DAO, value = Constants.HARDCODED_IMPL)
+                @WebInitParam(name = Constants.KEY_TASK_DAO, value = Constants.DB_IMPL)
         }
 
 )
 public class StartController extends BaseController {
+private Logger logger = null;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
+        logger = Logger.getRootLogger();
+
         String strUserDAO = config.getInitParameter(Constants.KEY_USER_DAO);
         String strTaskDAO = config.getInitParameter(Constants.KEY_TASK_DAO);
         UserFactory.setGlobals(strUserDAO);
@@ -32,7 +37,10 @@ public class StartController extends BaseController {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.forward(Constants.WELCOM_PAGE, request, response);
+        this.forward(ConstantsJSP.WELCOME_PAGE, request, response);
     }
+
+
+
 
 }

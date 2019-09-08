@@ -1,6 +1,6 @@
 package by.gsu.epamlab.controllers;
 
-import by.gsu.epamlab.constants.Constants;
+import by.gsu.epamlab.model.constants.Constants;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +13,9 @@ import java.io.IOException;
 @WebServlet("/BaseController")
 public abstract class BaseController extends HttpServlet {
 
+    protected void redirect(String url, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.sendRedirect(request.getContextPath() + url);
+    }
 
     protected void forward(String url, HttpServletRequest request,
                            HttpServletResponse response) throws ServletException, IOException {
@@ -20,15 +23,9 @@ public abstract class BaseController extends HttpServlet {
         rd.forward(request, response);
     }
 
-    protected void forwardError(String message, String url, HttpServletRequest request,
-                                HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute(Constants.KEY_ERROR_MESSAGE, message);
-        forward(url, request, response);
+    protected boolean isError(HttpServletRequest request) {
+        return request.getAttribute(Constants.KEY_ERROR_MESSAGE_ATTR) == null;
     }
 
-
-    protected void redirect(String url, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect(request.getContextPath() + url);
-    }
 
 }
